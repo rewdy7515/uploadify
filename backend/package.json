@@ -1,0 +1,7 @@
+{
+  "name": "spotify-migrator",
+  "version": "1.0.0",
+  "dependencies": {
+    "spotify-web-api-node": "^5.0.2"
+  }
+}
