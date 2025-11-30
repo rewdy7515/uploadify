@@ -5,7 +5,9 @@ function getSpotify() {
   const missing = required.filter((key) => !process.env[key]);
 
   if (missing.length) {
-    throw new Error(`Faltan variables de entorno Spotify: ${missing.join(", ")}`);
+    throw new Error(
+      `Faltan variables de entorno Spotify: ${missing.join(", ")}`
+    );
   }
 
   return new SpotifyWebApi({
@@ -16,3 +18,4 @@ function getSpotify() {
 }
 
 module.exports = { getSpotify };
+//
