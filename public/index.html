@@ -52,6 +52,11 @@
         color: #f5f5f5;
         border: 1px solid #333;
       }
+      button.ghost {
+        background: #ffffff;
+        color: #0b0b0b;
+        border: 1px solid #d6d6d6;
+      }
       button:disabled {
         opacity: 0.55;
         cursor: not-allowed;
@@ -107,6 +112,9 @@
 
       <div class="actions" id="authRow">
         <button id="loginBtn">Ingresar con Spotify</button>
+      </div>
+      <div id="switchRow" class="hidden" style="margin: 2px 0 18px;">
+        <button id="switchBtn" class="ghost">Iniciar sesión en otra cuenta</button>
       </div>
 
       <div id="app" class="hidden">

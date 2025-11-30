@@ -2,10 +2,12 @@ const loginBtn = document.querySelector("#loginBtn");
 const exportBtn = document.querySelector("#exportBtn");
 const importBtn = document.querySelector("#importBtn");
 const downloadBtn = document.querySelector("#downloadBtn");
+const switchBtn = document.querySelector("#switchBtn");
 const inputFile = document.querySelector("#inputFile");
 const statusEl = document.querySelector("#status");
 const app = document.querySelector("#app");
 const authRow = document.querySelector("#authRow");
+const switchRow = document.querySelector("#switchRow");
 const logEl = document.querySelector("#log");
 const progressWrap = document.querySelector("#progressWrap");
 const progressEl = document.querySelector("#progress");
@@ -27,6 +29,7 @@ function init() {
   importBtn.onclick = () => inputFile.click();
   downloadBtn.onclick = downloadBackup;
   inputFile.onchange = handleImport;
+  switchBtn.onclick = switchAccount;
 
   hydrateAuthState();
 }
@@ -36,12 +39,14 @@ function setLogged(state) {
 
   if (isLogged) {
     app.classList.remove("hidden");
-    authRow.classList.add("hidden");
     statusEl.textContent = "Listo. Exporta o importa tus playlists.";
+    switchRow.classList.remove("hidden");
   } else {
     app.classList.add("hidden");
-    authRow.classList.remove("hidden");
     statusEl.textContent = "Conecta tu cuenta de Spotify para continuar.";
+    downloadBtn.classList.add("hidden");
+    switchRow.classList.add("hidden");
+    backupBlob = null;
   }
 }
 
@@ -155,6 +160,7 @@ function finishProgress() {
   stopProgress();
   progressEl.value = 100;
   progressLabel.textContent = "100%";
+  downloadBtn.classList.remove("hidden");
 }
 
 function stopProgress() {
@@ -163,4 +169,9 @@ function stopProgress() {
     progressTimer = null;
   }
   progressWrap.classList.add("hidden");
+}
+
+function switchAccount() {
+  sessionStorage.removeItem("spotifyAuthed");
+  window.location.href = "/api/login";
 }
