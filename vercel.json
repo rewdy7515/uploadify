@@ -6,11 +6,11 @@
   ],
   "routes": [
     { "src": "^/$", "dest": "/public/index.html" },
+    { "src": "/api/(.*)", "dest": "/api/$1.js" },
     {
       "src": "/(.*)",
       "dest": "/public/$1",
       "headers": { "cache-control": "no-store" }
-    },
-    { "src": "/api/(.*)", "dest": "/api/$1.js" }
+    }
   ]
 }
