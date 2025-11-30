@@ -52,6 +52,11 @@
         color: #f5f5f5;
         border: 1px solid #333;
       }
+      #downloadBtn.secondary {
+        background: #3a3a3a;
+        border-color: #5a5a5a;
+        color: #ffffff;
+      }
       button.ghost {
         background: #ffffff;
         color: #0b0b0b;
@@ -172,24 +177,80 @@
 
         <div id="selection" class="selection hidden">
           <h3>Selecciona qué exportar</h3>
-          <label><input type="checkbox" data-key="userName" />Nombre de usuario</label>
-          <label><input type="checkbox" data-key="profileImage" />Foto de perfil</label>
-          <label><input type="checkbox" data-key="playlists" checked />Playlists</label>
-          <label><input type="checkbox" data-key="liked" checked />Me gustas</label>
-          <label><input type="checkbox" data-key="albums" checked />Álbumes guardados</label>
-          <label><input type="checkbox" data-key="artists" checked />Artistas seguidos</label>
-          <label><input type="checkbox" data-key="podcasts" checked />Podcasts</label>
+          <label>
+            <input type="checkbox" data-key="userName" />
+            <span>Nombre de usuario (<span id="count-userName">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-key="profileImage" />
+            <span>Foto de perfil (<span id="count-profileImage">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-key="playlists" checked />
+            <span>Playlists (<span id="count-playlists">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-key="liked" checked />
+            <span>Me gustas (<span id="count-liked">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-key="albums" checked />
+            <span>Álbumes guardados (<span id="count-albums">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-key="artists" checked />
+            <span>Artistas seguidos (<span id="count-artists">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-key="podcasts" checked />
+            <span>Podcasts (<span id="count-podcasts">0</span>)</span>
+          </label>
         </div>
 
         <div id="progressWrap" class="progress-wrap hidden">
           <div style="display: flex; justify-content: space-between; gap: 10px;">
-            <span>Exportando playlists...</span>
+            <span id="progressTitle">Procesando...</span>
             <span id="progressLabel">0%</span>
           </div>
           <progress id="progress" max="100" value="0"></progress>
         </div>
 
         <input type="file" id="inputFile" hidden />
+
+        <div id="importSelection" class="selection hidden">
+          <h3>Selecciona qué importar</h3>
+          <label>
+            <input type="checkbox" data-imp="userName" disabled />
+            <span>Nombre de usuario (<span id="imp-count-userName">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-imp="profileImage" disabled />
+            <span>Foto de perfil (<span id="imp-count-profileImage">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-imp="playlists" />
+            <span>Playlists (<span id="imp-count-playlists">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-imp="liked" />
+            <span>Me gustas (<span id="imp-count-liked">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-imp="albums" />
+            <span>Álbumes guardados (<span id="imp-count-albums">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-imp="artists" />
+            <span>Artistas seguidos (<span id="imp-count-artists">0</span>)</span>
+          </label>
+          <label>
+            <input type="checkbox" data-imp="podcasts" />
+            <span>Podcasts (<span id="imp-count-podcasts">0</span>)</span>
+          </label>
+          <div class="actions" style="margin-top: 10px;">
+            <button id="importGoBtn" class="secondary">Continuar importación</button>
+          </div>
+        </div>
       </div>
 
       <pre id="log"></pre>
